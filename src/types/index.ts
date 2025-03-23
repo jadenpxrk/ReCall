@@ -14,7 +14,7 @@ export type FormItemContextValue = {
   id: string;
 };
 
-// Message type for conversation
+// message type for conversation
 export interface Message {
   id: string;
   content: string;
@@ -22,9 +22,10 @@ export interface Message {
   timestamp: number;
 }
 
-// Popup component types
+// popup component types
 export interface PopupSettings {
-  apiKey: string;
+  geminiApiKey: string;
+  cohereApiKey: string;
   preferences: string;
 }
 
@@ -34,7 +35,7 @@ export interface PopupProps {
   className?: string;
 }
 
-// Form schema types
+// form schema types
 export const searchSchema = z.object({
   query: z.string().min(1, "Please enter a search term"),
 });
@@ -55,3 +56,61 @@ export const loginSchema = z.object({
 });
 
 export type LoginFormValues = z.infer<typeof loginSchema>;
+
+// graph data model
+export interface Position {
+  x: number;
+  y: number;
+}
+
+export type Edge = WebsiteToKeywordEdge | WebsiteToMentionEdge;
+
+export interface WebsiteNode {
+  id: string;
+  url: string;
+  title: string;
+  favicon?: string;
+  visitedAt: number;
+  lastPosition?: Position;
+}
+
+export interface KeywordNode {
+  id: string;
+  text: string;
+  sourceWebsiteId?: string;
+  position?: Position;
+}
+
+export interface MentionNode {
+  id: string;
+  text: string;
+  sourceWebsiteId: string;
+  context: string;
+  position?: Position;
+}
+
+export interface WebsiteToKeywordEdge {
+  id: string;
+  source: string; // WebsiteNode id
+  target: string; // KeywordNode id
+}
+
+export interface WebsiteToMentionEdge {
+  id: string;
+  source: string; // WebsiteNode id
+  target: string; // MentionNode id
+}
+
+export interface GraphData {
+  websites: WebsiteNode[];
+  keywords: KeywordNode[];
+  mentions: MentionNode[];
+  websiteToKeywordEdges: WebsiteToKeywordEdge[];
+  websiteToMentionEdges: WebsiteToMentionEdge[];
+}
+
+export interface SearchResults {
+  websites: WebsiteNode[];
+  keywords: KeywordNode[];
+  mentions: MentionNode[];
+}

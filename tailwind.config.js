@@ -2,12 +2,7 @@
 module.exports = {
   mode: "jit",
   darkMode: ["class"],
-  content: [
-    "./pages/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-    "./app/**/*.{ts,tsx}",
-    "./src/**/*.{ts,tsx}",
-  ],
+  content: ["./src/**/*.{ts,tsx}"],
   prefix: "",
   theme: {
     container: {
@@ -18,6 +13,73 @@ module.exports = {
       },
     },
     extend: {
+      typography: {
+        DEFAULT: {
+          css: {
+            "--tw-prose-body": "hsl(var(--foreground))",
+            "--tw-prose-headings": "hsl(var(--foreground))",
+            "--tw-prose-links": "hsl(var(--primary))",
+            "--tw-prose-bold": "hsl(var(--foreground))",
+            "--tw-prose-counters": "hsl(var(--muted-foreground))",
+            "--tw-prose-bullets": "hsl(var(--muted-foreground))",
+            "--tw-prose-hr": "hsl(var(--border))",
+            "--tw-prose-quotes": "hsl(var(--foreground))",
+            "--tw-prose-quote-borders": "hsl(var(--border))",
+            "--tw-prose-captions": "hsl(var(--muted-foreground))",
+            "--tw-prose-code": "hsl(var(--foreground))",
+            "--tw-prose-pre-code": "hsl(var(--muted))",
+            "--tw-prose-pre-bg": "hsl(var(--foreground))",
+            "--tw-prose-th-borders": "hsl(var(--border))",
+            "--tw-prose-td-borders": "hsl(var(--border))",
+            // Reduce spacing between elements
+            p: {
+              marginTop: "0.75em",
+              marginBottom: "0.75em",
+            },
+            "> ul > li": {
+              marginTop: "0.375em",
+              marginBottom: "0.375em",
+            },
+            "> ol > li": {
+              marginTop: "0.375em",
+              marginBottom: "0.375em",
+            },
+            "h1, h2, h3, h4": {
+              marginTop: "1.5em",
+              marginBottom: "0.75em",
+            },
+            hr: {
+              marginTop: "1.5em",
+              marginBottom: "1.5em",
+            },
+            pre: {
+              marginTop: "1em",
+              marginBottom: "1em",
+            },
+            blockquote: {
+              marginTop: "1em",
+              marginBottom: "1em",
+            },
+
+            // Dark mode is handled automatically by the CSS variables
+            "--tw-prose-invert-body": "hsl(var(--foreground))",
+            "--tw-prose-invert-headings": "hsl(var(--foreground))",
+            "--tw-prose-invert-links": "hsl(var(--primary))",
+            "--tw-prose-invert-bold": "hsl(var(--foreground))",
+            "--tw-prose-invert-counters": "hsl(var(--muted-foreground))",
+            "--tw-prose-invert-bullets": "hsl(var(--muted-foreground))",
+            "--tw-prose-invert-hr": "hsl(var(--border))",
+            "--tw-prose-invert-quotes": "hsl(var(--foreground))",
+            "--tw-prose-invert-quote-borders": "hsl(var(--border))",
+            "--tw-prose-invert-captions": "hsl(var(--muted-foreground))",
+            "--tw-prose-invert-code": "hsl(var(--foreground))",
+            "--tw-prose-invert-pre-code": "hsl(var(--muted))",
+            "--tw-prose-invert-pre-bg": "hsl(var(--foreground))",
+            "--tw-prose-invert-th-borders": "hsl(var(--border))",
+            "--tw-prose-invert-td-borders": "hsl(var(--border))",
+          },
+        },
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -71,169 +133,6 @@ module.exports = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-      },
-      typography: {
-        DEFAULT: {
-          css: {
-            maxWidth: "100%",
-            color: "var(--tw-prose-body)",
-            '[class~="lead"]': {
-              color: "var(--tw-prose-lead)",
-            },
-            a: {
-              color: "var(--tw-prose-links)",
-              textDecoration: "underline",
-              fontWeight: "500",
-            },
-            strong: {
-              color: "var(--tw-prose-bold)",
-              fontWeight: "600",
-            },
-            'ol[type="A"]': {
-              "--list-counter-style": "upper-alpha",
-            },
-            'ol[type="a"]': {
-              "--list-counter-style": "lower-alpha",
-            },
-            'ol[type="A" s]': {
-              "--list-counter-style": "upper-alpha",
-            },
-            'ol[type="a" s]': {
-              "--list-counter-style": "lower-alpha",
-            },
-            'ol[type="I"]': {
-              "--list-counter-style": "upper-roman",
-            },
-            'ol[type="i"]': {
-              "--list-counter-style": "lower-roman",
-            },
-            'ol[type="I" s]': {
-              "--list-counter-style": "upper-roman",
-            },
-            'ol[type="i" s]': {
-              "--list-counter-style": "lower-roman",
-            },
-            'ol[type="1"]': {
-              "--list-counter-style": "decimal",
-            },
-            "ol > li": {
-              position: "relative",
-            },
-            "ol > li::before": {
-              content:
-                'counter(list-item, var(--list-counter-style, decimal)) "."',
-              position: "absolute",
-              fontWeight: "400",
-              color: "var(--tw-prose-counters)",
-            },
-            "ul > li": {
-              position: "relative",
-            },
-            "ul > li::before": {
-              content: '""',
-              position: "absolute",
-              backgroundColor: "var(--tw-prose-bullets)",
-              borderRadius: "50%",
-            },
-            hr: {
-              borderColor: "var(--tw-prose-hr)",
-              borderTopWidth: 1,
-            },
-            blockquote: {
-              fontWeight: "500",
-              fontStyle: "italic",
-              color: "var(--tw-prose-quotes)",
-              borderLeftWidth: "0.25rem",
-              borderLeftColor: "var(--tw-prose-quote-borders)",
-              quotes: '"\\201C""\\201D""\\2018""\\2019"',
-            },
-            "blockquote p:first-of-type::before": {
-              content: "open-quote",
-            },
-            "blockquote p:last-of-type::after": {
-              content: "close-quote",
-            },
-            h1: {
-              color: "var(--tw-prose-headings)",
-              fontWeight: "800",
-            },
-            "h1 strong": {
-              fontWeight: "900",
-              color: "inherit",
-            },
-            h2: {
-              color: "var(--tw-prose-headings)",
-              fontWeight: "700",
-            },
-            "h2 strong": {
-              fontWeight: "800",
-              color: "inherit",
-            },
-            h3: {
-              color: "var(--tw-prose-headings)",
-              fontWeight: "600",
-            },
-            "h3 strong": {
-              fontWeight: "700",
-              color: "inherit",
-            },
-            h4: {
-              color: "var(--tw-prose-headings)",
-              fontWeight: "600",
-            },
-            "h4 strong": {
-              fontWeight: "700",
-              color: "inherit",
-            },
-            code: {
-              color: "var(--tw-prose-code)",
-              fontWeight: "600",
-            },
-            "code::before": {
-              content: '"`"',
-            },
-            "code::after": {
-              content: '"`"',
-            },
-            "a code": {
-              color: "inherit",
-            },
-            "h1 code": {
-              color: "inherit",
-            },
-            "h2 code": {
-              color: "inherit",
-            },
-            "h3 code": {
-              color: "inherit",
-            },
-            "h4 code": {
-              color: "inherit",
-            },
-            "blockquote code": {
-              color: "inherit",
-            },
-            thead: {
-              color: "var(--tw-prose-headings)",
-              fontWeight: "600",
-              borderBottomWidth: "1px",
-              borderBottomColor: "var(--tw-prose-th-borders)",
-            },
-            "thead th": {
-              verticalAlign: "bottom",
-            },
-            "tbody tr": {
-              borderBottomWidth: "1px",
-              borderBottomColor: "var(--tw-prose-td-borders)",
-            },
-            "tbody tr:last-child": {
-              borderBottomWidth: "0",
-            },
-            "tbody td": {
-              verticalAlign: "baseline",
-            },
-          },
-        },
       },
     },
   },
