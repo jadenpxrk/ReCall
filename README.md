@@ -4,11 +4,7 @@
 
 ## About
 
-ReCall is a chrome extension that turns your browser history into a GraphRAG.
-
-## Description
-
-ReCall analyzes your browsing history to create an interconnected knowledge graph, helping you visualize and recall your online browsing journey. ReCall answers questions based off your search history content and shows connections between visited web pages.
+ReCall is a chrome extension that turns your browser history into a GraphRAG. ReCall analyzes your browsing history to create an interconnected knowledge graph, helping you visualize and recall your online browsing journey. ReCall answers questions based off your search history content and shows connections between visited web pages.
 
 ## Demo
 
